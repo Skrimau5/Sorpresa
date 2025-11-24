@@ -19,6 +19,11 @@
     h1 {
         color: #d6336c;
         font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #b52e5b;
         margin-bottom: 40px;
     }
 
@@ -35,6 +40,7 @@
         border-radius: 10px;
         cursor: pointer;
         transition: 0.2s;
+        position: relative;
     }
 
     #btnSi {
@@ -54,7 +60,9 @@
 </head>
 <body>
 
+<h1>Hola Meli!</h1>
 <h1>Tengo una sorpresa para ti, ¿la quieres ver?</h1>
+<h2>Solo tienes que escoger una opción</h2>
 
 <div class="botones">
     <button id="btnSi">Sí</button>
@@ -65,20 +73,20 @@
     const btnNo = document.getElementById("btnNo");
     const btnSi = document.getElementById("btnSi");
 
+    // Guardar posición inicial del botón NO
+    const inicioX = btnNo.offsetLeft;
+    const inicioY = btnNo.offsetTop;
+
     btnNo.addEventListener("mouseover", () => {
 
-        // Convertir en absoluto cuando se mueve
         btnNo.style.position = "absolute";
 
-        // Obtener posición del botón SI
-        const rect = btnSi.getBoundingClientRect();
+        // Rango pequeño (ajustable)
+        const rango = 60;
 
-        // Definir un rango pequeño alrededor del botón Sí
-        const rango = 120; // puedes ajustar este número
-
-        // Calcular nueva posición cerca del "Sí"
-        const x = rect.left + (Math.random() * rango * 2 - rango);
-        const y = rect.top + (Math.random() * rango * 2 - rango);
+        // Nueva posición cerca de su origen
+        const x = inicioX + (Math.random() * rango * 2 - rango);
+        const y = inicioY + (Math.random() * rango * 2 - rango);
 
         btnNo.style.left = x + "px";
         btnNo.style.top = y + "px";
@@ -91,3 +99,4 @@
 
 </body>
 </html>
+
